@@ -1,0 +1,22 @@
+#poem {
+  max-width: 70%;
+  margin: 2em auto;
+  overflow: auto;
+  line-height: 1.7; }
+
+.random-shit[type="input"].random-1 {
+  max-width: 10%; }
+.random-shit[type="input"].random-2 {
+  max-width: 15%; }
+.random-shit[type="input"].random-3 {
+  max-width: 8%; }
+.random-shit[type="password"].random-1 {
+  max-width: 7%; }
+.random-shit[type="password"].random-2 {
+  max-width: 10%; }
+.random-shit[type="password"].random-3 {
+  max-width: 20%; }
+
+body {
+  margin: 0;
+  overflow: hidden; }
