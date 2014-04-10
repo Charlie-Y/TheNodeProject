@@ -1,4 +1,4 @@
-console.log("nexus_engine.js")
+# console.log("nexus_engine.js")
 
 
 ###
@@ -108,7 +108,7 @@ class ENGINE.Application
 
     bindEvents: () ->
         events = ["mousedown", "mouseup", "dblclick", "keydown", "keyup"]
-        console.log('bound')
+        # console.log('bound')
         for eventName in events
             fn = if @[eventName] then @[eventName] else @["on" + eventName]
             document.addEventListener(eventName, fn, false)
@@ -387,6 +387,8 @@ class ENGINE.Assets
 ENGINE.CameraCtrl = {
 
     goal: undefined # THREE.Vector3 position - where its going
+    prevGoal: undefined # previous vector goal
+
     state: undefined #what its doing
     camera: undefined
 
@@ -401,13 +403,16 @@ ENGINE.CameraCtrl = {
         if @state is @MOVING_TO_GOAL
             # console.log("bar"`)
 
-            currentPos = @camera.position.clone()
-            currentPos.sub(@goal).multiplyScalar(delta)
+            currentPos = @getEntityViewPosition()
+            
+            foo = currentPos.add(@goal.clone().sub(currentPos).multiplyScalar(delta))
 
-            foo = @camera.position.clone().add(currentPos)
-
+            
             @setEntityViewPosition( foo)
             @watchPosition(foo)
+
+            # @setEntityViewPosition( @goal)
+            # @watchPosition(@goal)
 
     setup: ->
         @camera = ENGINE.threeCamera
@@ -421,6 +426,9 @@ ENGINE.CameraCtrl = {
     setEntityViewPosition: (position) ->
         @camera.position.set(position.x ,400 + position.y ,150 + position.z)
 
+    getEntityViewPosition: ->
+        position = @camera.position
+        return new THREE.Vector3(position.x ,position.y - 400, position.z - 150)
 
     setTopDown: ->
         camera = ENGINE.threeCamera

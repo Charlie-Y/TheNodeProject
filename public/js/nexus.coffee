@@ -1,4 +1,4 @@
-console.log("nexus.js")
+# console.log("nexus.js")
 
 
 
@@ -121,7 +121,7 @@ nodeApp = new ENGINE.Application({
 
 nodeApp.game = new ENGINE.Scene({
     oncreate: ->
-        console.log("create")
+        # console.log("create")
         @entities = new ENGINE.NexusGrid(@)
         @player = @entities.playerNexon
     onstep: (delta) ->

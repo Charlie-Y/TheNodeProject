@@ -2,8 +2,6 @@
 (function() {
   var animate, camera, clock, container, controls, init, keyboard, nodeApp, render, renderer, scene, singleAnimate, update;
 
-  console.log("nexus.js");
-
   keyboard = new THREEx.KeyboardState();
 
   clock = new THREE.Clock();
@@ -108,7 +106,6 @@
 
   nodeApp.game = new ENGINE.Scene({
     oncreate: function() {
-      console.log("create");
       this.entities = new ENGINE.NexusGrid(this);
       return this.player = this.entities.playerNexon;
     },
